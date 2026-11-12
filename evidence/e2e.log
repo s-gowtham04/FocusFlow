@@ -1,0 +1,35 @@
+PASS  page title set
+PASS  lang attribute present
+PASS  3 columns rendered
+PASS  3 starter tasks rendered
+PASS  empty submit shows error
+PASS  error text is helpful
+PASS  input flagged aria-invalid
+PASS  focus moved to input
+PASS  task added
+PASS  error cleared after valid add
+PASS  live region announces add
+PASS  keyboard move works
+PASS  focus preserved inside board after move
+PASS  tasks persisted after reload
+PASS  moved task still in progress
+PASS  start becomes Pause
+PASS  timer counts down  [24:58]
+PASS  pause becomes Resume
+PASS  reset restores 25:00
+PASS  short break is 05:00
+PASS  aria-pressed updated
+PASS  pomodoro credited to active task  [0→1]
+PASS  auto-switched to short break
+PASS  delete removes task
+PASS  focus returns to input after delete
+PASS  corrupt storage → fresh start, no crash
+PASS  HTML title escaped (no injection)
+PASS  title shown literally
+PASS  skip link is first tab stop
+PASS  all buttons ≥ 44×44 CSS px  [0 too small]
+PASS  no horizontal overflow at 360px
+PASS  reduced motion disables dial transition  [0s]
+PASS  no console errors
+
+33/33 checks passed

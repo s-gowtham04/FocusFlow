@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: validateTitle rejects empty and whitespace-only input
+ok 1 - validateTitle rejects empty and whitespace-only input
+  ---
+  duration_ms: 0.846568
+  type: 'test'
+  ...
+# Subtest: validateTitle collapses whitespace and trims
+ok 2 - validateTitle collapses whitespace and trims
+  ---
+  duration_ms: 0.144844
+  type: 'test'
+  ...
+# Subtest: validateTitle enforces 80 character limit
+ok 3 - validateTitle enforces 80 character limit
+  ---
+  duration_ms: 0.150095
+  type: 'test'
+  ...
+# Subtest: createTask defaults and sanitises
+ok 4 - createTask defaults and sanitises
+  ---
+  duration_ms: 0.321177
+  type: 'test'
+  ...
+# Subtest: createTask generates unique ids
+ok 5 - createTask generates unique ids
+  ---
+  duration_ms: 1.69188
+  type: 'test'
+  ...
+# Subtest: moveTask moves within bounds and never mutates input
+ok 6 - moveTask moves within bounds and never mutates input
+  ---
+  duration_ms: 0.253669
+  type: 'test'
+  ...
+# Subtest: removeTask and addPomodoro
+ok 7 - removeTask and addPomodoro
+  ---
+  duration_ms: 1.41156
+  type: 'test'
+  ...
+# Subtest: sortTasks orders by priority then age
+ok 8 - sortTasks orders by priority then age
+  ---
+  duration_ms: 0.280646
+  type: 'test'
+  ...
+# Subtest: stats handles empty and partial boards
+ok 9 - stats handles empty and partial boards
+  ---
+  duration_ms: 0.378412
+  type: 'test'
+  ...
+# Subtest: formatTime
+ok 10 - formatTime
+  ---
+  duration_ms: 0.502213
+  type: 'test'
+  ...
+# Subtest: nextPhase gives a long break every 4th focus session
+ok 11 - nextPhase gives a long break every 4th focus session
+  ---
+  duration_ms: 0.165316
+  type: 'test'
+  ...
+# Subtest: sanitizeTasks survives corrupt storage
+ok 12 - sanitizeTasks survives corrupt storage
+  ---
+  duration_ms: 0.292118
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 103.840492

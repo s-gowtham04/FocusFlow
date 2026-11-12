@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FocusFlow – Task board with focus timer</title>
+  <meta name="description" content="An accessible, keyboard-friendly task board with a built-in Pomodoro timer. Works offline and saves to your browser.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b6e5f'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#board">Skip to task board</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <h1 class="brand">
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="currentColor"/><circle cx="16" cy="16" r="7" fill="none" stroke="var(--on-brand)" stroke-width="3"/></svg>
+        FocusFlow
+      </h1>
+      <p class="tagline">Plan the work. Protect the focus.</p>
+    </div>
+  </header>
+
+  <main class="wrap layout" id="main">
+    <section class="panel timer-panel" aria-labelledby="timer-heading">
+      <h2 id="timer-heading">Focus timer</h2>
+
+      <div class="phase-tabs" role="group" aria-label="Timer mode">
+        <button type="button" class="chip" data-phase="focus" aria-pressed="true">Focus 25</button>
+        <button type="button" class="chip" data-phase="short" aria-pressed="false">Short break 5</button>
+        <button type="button" class="chip" data-phase="long" aria-pressed="false">Long break 15</button>
+      </div>
+
+      <div class="dial" id="dial">
+        <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <circle class="dial-track" cx="60" cy="60" r="52"/>
+          <circle class="dial-progress" id="dial-progress" cx="60" cy="60" r="52"/>
+        </svg>
+        <div class="dial-text">
+          <!-- Not a live region: announcing every second would be noisy. Phase changes use #announcer. -->
+          <span class="time" id="time" role="timer" aria-label="Time remaining">25:00</span>
+          <span class="phase-label" id="phase-label">Focus</span>
+        </div>
+      </div>
+
+      <div class="timer-controls">
+        <button type="button" class="btn primary" id="start-btn">Start</button>
+        <button type="button" class="btn" id="reset-btn">Reset</button>
+      </div>
+
+      <p class="working-on">Working on: <strong id="active-task">no task selected</strong></p>
+      <p class="hint">Finishing a focus session adds a 🍅 to the selected task.</p>
+    </section>
+
+    <section class="panel board-panel" aria-labelledby="board-heading">
+      <div class="board-head">
+        <h2 id="board-heading">Task board</h2>
+        <p class="progress" id="progress" aria-live="polite">0 of 0 tasks done</p>
+      </div>
+
+      <form id="task-form" class="task-form" novalidate>
+        <div class="field grow">
+          <label for="task-title">New task</label>
+          <input id="task-title" name="title" type="text" autocomplete="off" maxlength="120"
+                 aria-describedby="title-error" placeholder="e.g. Draft the project README">
+          <p class="error" id="title-error" role="alert" hidden></p>
+        </div>
+        <div class="field">
+          <label for="task-priority">Priority</label>
+          <select id="task-priority" name="priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <button type="submit" class="btn primary add-btn">Add task</button>
+      </form>
+
+      <div class="board" id="board"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Tasks are saved only in this browser (localStorage). Shortcuts: <kbd>Space</kbd> on the timer button to start/pause, <kbd>Esc</kbd> to clear the task field.</p>
+    </div>
+  </footer>
+
+  <!-- Polite announcements for screen reader users -->
+  <div class="sr-only" id="announcer" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
